@@ -60,6 +60,40 @@ class StockPage extends StatelessWidget {
                   'Daily Change: ${stock.dailyChange.toStringAsFixed(2)}',
                   style: const TextStyle(fontSize: 18),
                 ),
+
+                const SizedBox(height: 35),
+
+                // Bull Market button
+                ElevatedButton(
+                  onPressed: () {
+                    stockBloc.stockSink.add(StockAction.Increase);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                    foregroundColor: Colors.white,
+                  ),
+                  child: const Text('Bull Market'),
+                ),
+
+                // Bear Market button
+                ElevatedButton(
+                  onPressed: () {
+                    stockBloc.stockSink.add(StockAction.Decrease);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.red,
+                    foregroundColor: Colors.white,
+                  ),
+                  child: const Text('Bear Market'),
+                ),
+
+                // Reset button
+                ElevatedButton(
+                  onPressed: () {
+                    stockBloc.stockSink.add(StockAction.Reset);
+                  },
+                  child: const Text('Reset'),
+                ),
               ],
             );
           },
